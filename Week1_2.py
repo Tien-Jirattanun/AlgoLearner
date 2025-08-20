@@ -1,7 +1,11 @@
-a = [3,1,9,7,5,2,6,8,4]
+# case 1
+# a = [3,1,9,7,5,2,6,8,4]
 
-L = [0,0,0,0,0,0,0,0,0]
-R = [0,0,0,0,0,0,0,0,0]
+# case 2
+a = [1, 6, 3, 2, 7, 9]
+
+L = [0] * len(a)
+R = [0] * len(a)
 
 def divide(array):
     
@@ -27,13 +31,13 @@ def merge(sub_array_one, sub_array_two):
    
     # needed to be sort
     while (i < len(sub_array_one) and j < len(sub_array_two)):
-        if sub_array_one[i] < sub_array_two[j]:
+        if sub_array_one[i] <= sub_array_two[j]:
             A.append(sub_array_one[i])
-            L[a.index(sub_array_two[j])] += i 
+            R[a.index(sub_array_one[i])] += j
             i += 1
         elif sub_array_one[i] > sub_array_two[j]:
             A.append(sub_array_two[j])
-            R[a.index(sub_array_one[i])] += j 
+            L[a.index(sub_array_two[j])] += i 
             j += 1 
             
     while (i < len(sub_array_one)):
@@ -48,8 +52,8 @@ def merge(sub_array_one, sub_array_two):
     return A 
     
 if __name__ == "__main__":
-    sorted = divide(a)
-    print(sorted)
+    sort = divide(a)
+    print(sort)
     print(a)
     print(L)
     print(R)
